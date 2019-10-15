@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "title": "Angular 101 Sessions",
+      "date": "10 October 11: 00",
+      "attending": ["Jas", "Ti", "Toj"],
+      "location": "Arena",
+      "status": "Draft"
+    },
+    {
+      "title": "Angular Advanced",
+      "date": "10 November 11: 00",
+      "attending": ["Jas", "Ti", "Toj"],
+      "location": "West",
+      "status": "Published"
+    }
+  ]
+}

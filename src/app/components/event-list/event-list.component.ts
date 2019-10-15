@@ -5,7 +5,7 @@ import { EventModel } from '../../models/event.model';
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.css']
+  styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
   @Input() something: number;

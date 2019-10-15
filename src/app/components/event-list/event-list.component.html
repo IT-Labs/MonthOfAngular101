@@ -1,0 +1,39 @@
+{{ counter }}
+<div>
+  <h1>Events</h1>
+  <div>
+    <table>
+      <thead>
+        <th>Title</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Attending</th>
+        <th>Status</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events">
+          <td>
+            {{ event.title }}
+          </td>
+          <td>
+            {{ event.location }}
+          </td>
+          <td>
+            {{ event.date }}
+          </td>
+          <td>
+            {{ event.attending.length }}
+          </td>
+          <td>
+            {{ event.status }}
+          </td>
+          <td>
+            <button>Edit</button>
+            <button>Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

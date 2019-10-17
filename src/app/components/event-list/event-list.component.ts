@@ -8,10 +8,6 @@ import { EventModel } from '../../models/event.model';
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
-  @Input() something: number;
-
-  someProp = 'Something something';
-
   events: EventModel[];
 
   constructor(private eventService: EventsService) {}

@@ -1,0 +1,23 @@
+<form>
+  <div>
+    <label>Title:</label>
+    <input type="text" name="title" />
+  </div>
+
+  <div>
+    <label>Date:</label>
+    <input type="text" name="location" />
+  </div>
+  <div>
+    <label>Status:</label>
+    <select name="status">
+      <option>{{ EventStatus.draft }}</option>
+      <option>{{ EventStatus.published }}</option>
+    </select>
+  </div>
+
+  <div>
+    <button type="button">Cancel</button>
+    <button type="submit">Save</button>
+  </div>
+</form>

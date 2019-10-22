@@ -1,0 +1,9 @@
+<div>
+  <div>
+    <button type="button">Back</button>
+  </div>
+  <div *ngIf="eventLoading">Loading...</div>
+  <div *ngIf="!eventLoading && !!event">
+    {{ event | json }}
+  </div>
+</div>

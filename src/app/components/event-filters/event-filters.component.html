@@ -1,0 +1,14 @@
+<div>
+  <label>Keyword:</label>
+  <input
+    type="text"
+    [value]="filters.keyword"
+    (change)="onKeywordChange($event)"
+  />
+
+  <label>Status:</label>
+  <select>
+    <option>Draft</option>
+    <option>Published</option>
+  </select>
+</div>

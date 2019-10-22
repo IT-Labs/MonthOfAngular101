@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { EventModel, EventStatus } from '../models/event.model';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
+import { delay } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
-  getEvents(): EventModel[] {
-    return [
-      {
-        title: 'Angular 101 Sessions',
-        date: '10 October 11:00',
-        attending: ['Jas', 'Ti', 'Toj'],
-        location: 'Arena',
-        status: EventStatus.published
-      },
+  constructor(private httpClient: HttpClient) {}
 
-      {
-        title: 'Angular Advanced',
-        date: '10 November 11:00',
-        attending: ['Jas', 'Ti', 'Toj'],
-        location: 'West',
-        status: EventStatus.published
-      }
-    ];
+  getEvents(filters: {
+    keyword: string;
+    status: string;
+  }): Observable<EventModel[]> {
+    let params = new HttpParams();
+    params = params.append('q', filters.keyword);
+    if (filters.status) {
+      params.append('status', filters.status);
+    }
+
+    return this.httpClient
+      .get<EventModel[]>('http://localhost:3000/events', {
+        params
+      })
+      .pipe(delay(500));
   }
 }

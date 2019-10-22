@@ -8,13 +8,45 @@ import { EventModel } from '../../models/event.model';
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
-  events: EventModel[];
+  events: EventModel[] = [];
+  eventsLoading = false;
+
+  listFilters: {
+    keyword: string;
+    status: string;
+  } = {
+    keyword: 'advanced',
+    status: ''
+  };
 
   constructor(private eventService: EventsService) {}
 
   ngOnInit() {
-    this.events = this.eventService.getEvents();
+    // 1
+    this.eventsLoading = true;
+    this.eventService.getEvents(this.listFilters).subscribe(events => {
+      // 4
+      this.events = events;
+      this.eventsLoading = false;
+      console.log(this.events);
+    });
 
+    // 2
+
+    // 3
     console.log(this.events);
+  }
+
+  onFiltersChange(filters) {
+    this.listFilters = filters;
+
+    console.log('event list new filters', this.listFilters);
+
+    this.eventsLoading = true;
+    this.eventService.getEvents(this.listFilters).subscribe(events => {
+      this.events = events;
+      console.log(this.events);
+      this.eventsLoading = false;
+    });
   }
 }

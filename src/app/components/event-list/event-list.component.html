@@ -2,7 +2,12 @@
 <div class="container">
   <h1>Events</h1>
   <div>
-    <table class="table">
+    <app-event-filters
+      [filters]="listFilters"
+      (filtersChange)="onFiltersChange($event)"
+    ></app-event-filters>
+    <span *ngIf="eventsLoading">Loading...</span>
+    <table class="table" *ngIf="!eventsLoading">
       <thead>
         <th>Title</th>
         <th>Location</th>

@@ -4,6 +4,7 @@ export enum EventStatus {
 }
 
 export interface EventModel {
+  id: number;
   title: string;
   date: string;
   location: string;

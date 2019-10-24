@@ -26,4 +26,10 @@ export class EventsService {
       })
       .pipe(delay(500));
   }
+
+  getEventById(id): Observable<EventModel> {
+    return this.httpClient.get<EventModel>(
+      'http://localhost:3000/events/' + id
+    );
+  }
 }

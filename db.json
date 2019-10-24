@@ -1,6 +1,7 @@
 {
   "events": [
     {
+      "id": 1,
       "title": "Angular 101 Sessions",
       "date": "10 October 11: 00",
       "attending": ["Jas", "Ti", "Toj"],
@@ -8,6 +9,7 @@
       "status": "Draft"
     },
     {
+      "id": 2,
       "title": "Angular Advanced",
       "date": "10 November 11: 00",
       "attending": ["Jas", "Ti", "Toj"],

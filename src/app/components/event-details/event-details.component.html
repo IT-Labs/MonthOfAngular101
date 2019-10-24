@@ -1,9 +1,10 @@
 <div>
   <div>
-    <button type="button">Back</button>
+    <button type="button" [routerLink]="['/events']">Back</button>
   </div>
   <div *ngIf="eventLoading">Loading...</div>
   <div *ngIf="!eventLoading && !!event">
     {{ event | json }}
+    <app-event-form></app-event-form>
   </div>
 </div>

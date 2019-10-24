@@ -15,7 +15,7 @@ export class EventListComponent implements OnInit {
     keyword: string;
     status: string;
   } = {
-    keyword: 'advanced',
+    keyword: '',
     status: ''
   };
 

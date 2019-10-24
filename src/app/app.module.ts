@@ -10,6 +10,7 @@ import { EventDetailsComponent } from './components/event-details/event-details.
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { EventFormComponent } from './components/event-form/event-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,13 @@ import { EventFormComponent } from './components/event-form/event-form.component
     EventDetailsComponent,
     EventFormComponent
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(APP_ROUTES)],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(APP_ROUTES),
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [EventsService],
   bootstrap: [AppComponent]
 })

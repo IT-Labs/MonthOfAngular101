@@ -34,7 +34,9 @@
             {{ event.status }}
           </td>
           <td>
-            <button>Edit</button>
+            <button type="button" [routerLink]="['/events', event.id]">
+              Edit
+            </button>
             <button>Remove</button>
           </td>
         </tr>

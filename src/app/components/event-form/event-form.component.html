@@ -1,16 +1,16 @@
-<form>
+<form [formGroup]="eventForm">
   <div>
     <label>Title:</label>
-    <input type="text" name="title" />
+    <input type="text" name="title" formControlName="title" />
   </div>
 
   <div>
     <label>Date:</label>
-    <input type="text" name="location" />
+    <input type="text" name="date" formControlName="date" />
   </div>
   <div>
     <label>Status:</label>
-    <select name="status">
+    <select name="status" formControlName="status">
       <option>{{ EventStatus.draft }}</option>
       <option>{{ EventStatus.published }}</option>
     </select>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EventModel, EventStatus } from '../../models/event.model';
 import {
   FormControl,
@@ -7,12 +7,17 @@ import {
   Validators
 } from '@angular/forms';
 
+const maxDateValidator = (control: FormControl) => {
+  return null;
+};
+
 @Component({
   selector: 'app-event-form',
   templateUrl: './event-form.component.html'
 })
 export class EventFormComponent implements OnInit {
   @Input() event: EventModel;
+  @Output() eventSave = new EventEmitter<EventModel>();
 
   EventStatus = EventStatus;
 
@@ -28,9 +33,14 @@ export class EventFormComponent implements OnInit {
     // });
 
     this.eventForm = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      date: new FormControl(''),
-      status: new FormControl('')
+      title: new FormControl(this.event.title, [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(20),
+        maxDateValidator
+      ]),
+      date: new FormControl(this.event.date, [Validators.maxLength(10)]),
+      status: new FormControl(this.event.status, [Validators.required])
     });
 
     this.eventForm.valueChanges.subscribe(formValue => {
@@ -38,5 +48,25 @@ export class EventFormComponent implements OnInit {
     });
   }
 
-  save() {}
+  save() {
+    console.log('saving', this.event, this.eventForm.value);
+
+    const parent = {
+      ...{ a: 1, b: 2 },
+      ...{ b: 3 },
+      ...{ c: 4 }
+    };
+
+    parent.a === 1;
+    parent.b === 3;
+
+    const updatedEvent = {
+      ...this.event,
+      ...this.eventForm.value
+    };
+
+    console.log(updatedEvent);
+
+    this.eventSave.emit(updatedEvent);
+  }
 }

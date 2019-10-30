@@ -5,6 +5,9 @@
   <div *ngIf="eventLoading">Loading...</div>
   <div *ngIf="!eventLoading && !!event">
     {{ event | json }}
-    <app-event-form></app-event-form>
+    <app-event-form
+      [event]="event"
+      (eventSave)="saveEvent($event)"
+    ></app-event-form>
   </div>
 </div>

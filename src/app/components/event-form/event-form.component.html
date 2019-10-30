@@ -1,7 +1,20 @@
-<form [formGroup]="eventForm">
+<form [formGroup]="eventForm" (submit)="save()">
   <div>
     <label>Title:</label>
     <input type="text" name="title" formControlName="title" />
+    <div id="errors" class="errors" *ngIf="eventForm.get('title').invalid">
+      <div id="required-error" *ngIf="eventForm.get('title')?.errors?.required">
+        This field is required
+      </div>
+      <div
+        id="max-length-error"
+        *ngIf="eventForm.get('title')?.errors?.maxlength"
+      >
+        This field accepts max
+        {{ eventForm.get('title')?.errors?.maxlength.requiredLength }}
+        characters
+      </div>
+    </div>
   </div>
 
   <div>
@@ -11,13 +24,15 @@
   <div>
     <label>Status:</label>
     <select name="status" formControlName="status">
-      <option>{{ EventStatus.draft }}</option>
-      <option>{{ EventStatus.published }}</option>
+      <option [value]="EventStatus.draft">{{ EventStatus.draft }}</option>
+      <option [value]="EventStatus.published">{{
+        EventStatus.published
+      }}</option>
     </select>
   </div>
 
   <div>
-    <button type="button">Cancel</button>
+    <button type="button" [routerLink]="['/events']">Cancel</button>
     <button type="submit">Save</button>
   </div>
 </form>

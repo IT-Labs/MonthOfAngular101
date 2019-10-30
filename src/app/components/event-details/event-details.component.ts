@@ -27,4 +27,8 @@ export class EventDetailsComponent implements OnInit {
       this.eventLoading = false;
     });
   }
+
+  saveEvent(event: EventModel) {
+    console.log('saving event', event);
+  }
 }
